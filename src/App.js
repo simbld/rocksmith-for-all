@@ -3,8 +3,8 @@ import Clock from "./Clock";
 import Title from "./Title";
 
 class App extends Component {
-	handleDisplayAlert(event, name) {
-		alert(`Hello ${name}`);
+	handleDisplayAlert(event) {
+		alert(<Clock />);
 	}
 	render() {
 		return (
@@ -29,15 +29,15 @@ class App extends Component {
 					qu'il necessite l'achat d'un DLC sur steam (ex: Cherub Rock) pour
 					pouvoir jouer les CDLC (voir tutos pour plus d'info)
 				</p>
-				<Clock increment={1} />
+				<Clock />
 				<button
-					onClick={(event) => {
-						if (window.confirm("Voulez vous voir John ?")) {
-							this.handleDisplayAlert(event, "john");
+					onClick={() => {
+						if (window.confirm("Vous voulez voir l'heure ?")) {
+							this.handleDisplayAlert("Dommage pour vous");
 						}
 					}}
 				>
-					Click ici !!!
+					Horloge on/off
 				</button>
 			</>
 		);

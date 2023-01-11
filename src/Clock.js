@@ -13,7 +13,6 @@ class Clock extends Component {
 			this.setState((state, props) => {
 				return {
 					date: new Date(),
-					count: state.count < 10 ? state.count + props.increment : state.count,
 				};
 			});
 		}, 1000);
