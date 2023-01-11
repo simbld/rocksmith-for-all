@@ -3,8 +3,8 @@ import Clock from "./Clock";
 import Title from "./Title";
 
 class App extends Component {
-	handleDisplayAlert(event) {
-		alert(<Clock />);
+	handleDisplayAlert(name) {
+		alert(`Hello ${name}`);
 	}
 	render() {
 		return (
@@ -32,12 +32,12 @@ class App extends Component {
 				<Clock />
 				<button
 					onClick={() => {
-						if (window.confirm("Vous voulez voir l'heure ?")) {
-							this.handleDisplayAlert("Dommage pour vous");
+						if (window.confirm("Voulez vous voir l'heure ?")) {
+							this.handleDisplayAlert("Voici l'heure");
 						}
 					}}
 				>
-					Horloge on/off
+					Click ici !!!
 				</button>
 			</>
 		);
