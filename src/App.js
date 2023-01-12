@@ -73,6 +73,7 @@ class App extends Component {
 				<button onClick={this.handleDisplayClock.bind(this)}>
 					{this.state.isClockDisplay ? "Cacher" : "Afficher"} l'horloge
 				</button>
+				{this.state.isClockDisplay && <Clock />}
 			</>
 		);
 	}
