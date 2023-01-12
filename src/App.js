@@ -16,12 +16,15 @@ class App extends Component {
 
 	handleDisplayAlert(event) {
 		// on crée une fonction qui va permettre d'afficher une alerte
-		alert(`Cliquez sur le bouton HORLOGE`); // on affiche une alerte
+		alert("Cliquez sur le bouton HORLOGE"); // on affiche une alerte
 	}
-	handleDisplayClock() {
+	handleDisplayClock = () => {
+		// on crée une fonction fléché qui va permettre de garder le contexte de (this)
+		console.log(this); // on affiche le contexte de (this) dans la console et on écrit .bind(this) dans la fonction onClick du bouton plus bas
 		// on crée une fonction qui va permettre de changer la valeur de l'état (State) d'affichage de l'horloge
 		// on récupère et on va pouvoir utiliser le State (this.setState(state)) actuelle pour changer la valeur de l'état,
 		this.setState((state) => {
+			// on utilise la fonction CALLBACK du setState pour mettre à jour le State
 			// on utilise la fonction setState pour mettre à jour le State
 			return {
 				//et retourner le State a mettre a jour
@@ -29,7 +32,7 @@ class App extends Component {
 			};
 		}); // on ferme la fonction setState
 		// mise à jour de l'état (State) d'affichage de l'horloge
-	} // on ferme la fonction handleDisplayClock
+	}; // on ferme la fonction handleDisplayClock
 
 	render() {
 		// on crée une fonction qui va permettre de rendre le composant
@@ -67,7 +70,7 @@ class App extends Component {
 				>
 					QUESTION ?
 				</button>
-				<button onClick={() => this.handleDisplayClock()}>
+				<button onClick={this.handleDisplayClock.bind(this)}>
 					{this.state.isClockDisplay ? "Cacher" : "Afficher"} l'horloge
 				</button>
 			</>
