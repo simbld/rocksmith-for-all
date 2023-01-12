@@ -1,13 +1,40 @@
-import { Component } from "react";
-import Clock from "./Clock";
-import Title from "./Title";
+import { Component } from "react"; // on importe la classe Component de la librairie react
+import Clock from "./Clock"; // on importe le composant Clock
+import Title from "./Title"; // on importe le composant Title
 
 class App extends Component {
-	handleDisplayAlert(name) {
-		alert(`Hello ${name}`);
+	// on crée une classe qui va hériter de la classe Component
+	constructor(props) {
+		// on initialise le State
+		super(props); // on appelle le constructeur de la classe parente
+		this.state = {
+			// on initialise le State
+
+			isClockDisplay: false, // on initialise la valeur de l'état (State) d'affichage de l'horloge
+		}; // on ferme le State
+	} // on ferme le constructeur
+
+	handleDisplayAlert(event) {
+		// on crée une fonction qui va permettre d'afficher une alerte
+		alert(`Cliquez sur le bouton HORLOGE`); // on affiche une alerte
 	}
+	handleDisplayClock() {
+		// on crée une fonction qui va permettre de changer la valeur de l'état (State) d'affichage de l'horloge
+		// on récupère et on va pouvoir utiliser le State (this.setState(state)) actuelle pour changer la valeur de l'état,
+		this.setState((state) => {
+			// on utilise la fonction setState pour mettre à jour le State
+			return {
+				//et retourner le State a mettre a jour
+				isClockDisplay: !state.isClockDisplay, // on change la valeur de l'état (State) d'affichage de l'horloge
+			};
+		}); // on ferme la fonction setState
+		// mise à jour de l'état (State) d'affichage de l'horloge
+	} // on ferme la fonction handleDisplayClock
+
 	render() {
+		// on crée une fonction qui va permettre de rendre le composant
 		return (
+			// on retourne le composant
 			<>
 				<Title content="Rocksmith for All">
 					<span>Menu</span>
@@ -30,14 +57,18 @@ class App extends Component {
 					pouvoir jouer les CDLC (voir tutos pour plus d'info)
 				</p>
 				<Clock />
+
 				<button
 					onClick={() => {
 						if (window.confirm("Voulez vous voir l'heure ?")) {
-							this.handleDisplayAlert("Voici l'heure");
+							this.handleDisplayAlert();
 						}
 					}}
 				>
-					Click ici !!!
+					QUESTION ?
+				</button>
+				<button onClick={() => this.handleDisplayClock()}>
+					{this.state.isClockDisplay ? "Cacher" : "Afficher"} l'horloge
 				</button>
 			</>
 		);
