@@ -60,7 +60,6 @@ class App extends Component {
 					pouvoir jouer les CDLC (voir tutos pour plus d'info)
 				</p>
 				<Clock />
-
 				<button
 					onClick={() => {
 						if (window.confirm("Voulez vous voir l'heure ?")) {
@@ -71,9 +70,16 @@ class App extends Component {
 					QUESTION ?
 				</button>
 				<button onClick={this.handleDisplayClock.bind(this)}>
-					{this.state.isClockDisplay ? "Cacher" : "Afficher"} l'horloge
+					{" "}
+					// on utilise la fonction .bind(this) pour garder le contexte de
+					(this)
+					{this.state.isClockDisplay ? "Cacher" : "Afficher"} l'horloge // on
+					affiche le texte en fonction de la valeur de l'état (State)
+					d'affichage de l'horloge
 				</button>
-				{this.state.isClockDisplay && <Clock />}
+				{this.state.isClockDisplay && <Clock />} // on affiche le composant
+				Clock en fonction de la valeur de l'état (State) d'affichage de
+				l'horloge
 			</>
 		);
 	}
